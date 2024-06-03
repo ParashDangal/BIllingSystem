@@ -1,0 +1,46 @@
+﻿@model IEnumerable<bill.Models.Data.CalculateBillModel>
+
+@{
+    ViewData["Title"] = "Bills";
+}
+
+<h1>Bills</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Pan No</th>
+            <th>Price</th>
+            <th>Item Name</th>
+            <th>Total Price</th>
+            <th>Bill No</th>
+            <th>Created Date</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Address</td>
+                <td>@item.Pan_No</td>
+                <td>@item.Price</td>
+                <td>@item.ItemName.Name</td>
+                <td>@item.TotalPrice</td>
+                <td>@item.BillNo</td>
+                <td>@item.CreatedDate</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
